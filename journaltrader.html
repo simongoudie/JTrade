@@ -1,0 +1,73 @@
+<html>
+
+<head>
+
+	<script src="journaltrader.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="journaltrader.css" />
+	
+</head>
+
+<body>
+	 <div id="topText">
+		<h1 id="title">Trading</h1>
+		<h2 id="blurb">Buy and sell to make a profit</h2>
+		<p id="instructions">Use the buttons below to buy and sell products to make a profit on the changing prices.<br> When you're done buying and selling, or if you run out of money, choose 'Work' to spend a day earning money.<br> The Bank will let you deposit and withdraw money, with the balance earning interest each day.<br> You've got 60 days to earn as much as you can, so get to it!</p>
+	 </div>
+	
+	<div id="controls">
+		<input type="button" value="Work" id="workButton" onClick=rexWork() /><input type="text" id="depositField" size=6 /><input type="button" value="Deposit" id="depositButton" onClick=rexDeposit() /><input type="button" value="Max" id="maxBankButton" onClick=rexBankMax() /><input type="button" value="Withdraw" id="withdrawButton" onClick=rexWithdraw() /><input type="text" id="withdrawField" size=6 />
+	</div>
+		
+	<div id="gameTable">
+		<table id="productGrid" cellpadding="2" cellspacing="1">
+		<tr><th>Product</th><th>Price</th><th>Available</th><th>Owned</th><th>Buy/Sell</th></tr>
+		
+		<tr><td>AERE</td><td id="AEREPriceField">0</td><td id="AEREAvailableField">0</td><td id="AEREOwnedField">0</td><td><input type="text" size=6 id="AEREBuyField"><input type="button" value="Buy" id="AEREbuyButton" onClick=rexBuy("AERE")><input type="button" value="Max" onClick=rexProductMax("AERE")><input type="button" value="Sell" id="AEREsellButton" onClick=rexSell("AERE")><input type="text" size=6 id="AERESellField"/></td></tr>
+		
+		<tr><td>AEPA</td><td id="AEPAPriceField">0</td><td id="AEPAAvailableField">0</td><td id="AEPAOwnedField">0</td><td><input type="text" size=6 id="AEPABuyField"><input type="button" value="Buy" id="AEPAbuyButton" onClick=rexBuy("AEPA")><input type="button" value="Max" onClick=rexProductMax("AEPA")><input type="button" value="Sell" id="AEPAsellButton" onClick=rexSell("AEPA")><input type="text" size=6 id="AEPASellField"/></td></tr>
+		
+		<tr><td>AJAR</td><td id="AJARPriceField">0</td><td id="AJARAvailableField">0</td><td id="AJAROwnedField">0</td><td><input type="text" size=6 id="AJARBuyField"/><input type="button" value="Buy" id="AJARbuyButton" onClick=rexBuy("AJAR")><input type="button" value="Max" onClick=rexProductMax("AJAR")><input type="button" value="Sell" id="AJARsellButton" onClick=rexSell("AJAR")><input type="text" size=6 id="AJARSellField"/></td></tr>
+		
+		<tr><td>JORH</td><td id="JORHPriceField">0</td><td id="JORHAvailableField">0</td><td id="JORHOwnedField">0</td><td><input type="text" size=6 id="JORHBuyField"/><input type="button" value="Buy" id="JORHbuyButton" onClick=rexBuy("JORH")><input type="button" value="Max" onClick=rexProductMax("JORH")><input type="button" value="Sell" id="JORHsellButton" onClick=rexSell("JORH")><input type="text" size=6 id="JORHSellField"/></td></tr>
+		
+		<tr><td>APV</td><td id="APVPriceField">0</td><td id="APVAvailableField">0</td><td id="APVOwnedField">0</td><td><input type="text" size=6 id="APVBuyField"/><input type="button" value="Buy" id="APVbuyButton" onClick=rexBuy("APV")><input type="button" value="Max" onClick=rexProductMax("APV")><input type="button" value="Sell" id="APVsellButton" onClick=rexSell("APV")><input type="text" size=6 id="APVSellField"/></td></tr>
+		
+		<tr><td>TAJA</td><td id="TAJAPriceField">0</td><td id="TAJAAvailableField">0</td><td id="TAJAOwnedField">0</td><td><input type="text" size=6 id="TAJABuyField"/><input type="button" value="Buy" id="TAJAbuyButton" onClick=rexBuy("TAJA")><input type="button" value="Max" onClick=rexProductMax("TAJA")><input type="button" value="Sell" id="TAJAsellButton" onClick=rexSell("TAJA")><input type="text" size=6 id="TAJASellField"/></td></tr>
+		
+		<tr><td>SJTG</td><td id="SJTGPriceField">0</td><td id="SJTGAvailableField">0</td><td id="SJTGOwnedField">0</td><td><input type="text" size=6 id="SJTGBuyField"/><input type="button" value="Buy" id="SJTGbuyButton" onClick=rexBuy("SJTG")><input type="button" value="Max" onClick=rexProductMax("SJTG")><input type="button" value="Sell" id="SJTGsellButton" onClick=rexSell("SJTG")><input type="text" size=6 id="SJTGSellField"/></td></tr>
+		
+		<tr><td>GEOR</td><td id="GEORPriceField">0</td><td id="GEORAvailableField">0</td><td id="GEOROwnedField">0</td><td><input type="text" size=6 id="GEORBuyField"/><input type="button" value="Buy" id="GEORbuyButton" onClick=rexBuy("GEOR")><input type="button" value="Max" onClick=rexProductMax("GEOR")><input type="button" value="Sell" id="GEORsellButton" onClick=rexSell("GEOR")><input type="text" size=6 id="GEORSellField"/></td></tr>
+		
+		<tr><td>APEL</td><td id="APELPriceField">0</td><td id="APELAvailableField">0</td><td id="APELOwnedField">0</td><td><input type="text" size=6 id="APELBuyField"/><input type="button" value="Buy" id="APELbuyButton" onClick=rexBuy("APEL")><input type="button" value="Max" onClick=rexProductMax("APEL")><input type="button" value="Sell" id="APELsellButton" onClick=rexSell("APEL")><input type="text" size=6 id="APELSellField"/></td></tr>
+		
+		<tr><td>ECOR</td><td id="ECORPriceField">0</td><td id="ECORAvailableField">0</td><td id="ECOROwnedField">0</td><td><input type="text" size=6 id="ECORBuyField"/><input type="button" value="Buy" id="ECORbuyButton" onClick=rexBuy("ECOR")><input type="button" value="Max" onClick=rexProductMax("ECOR")><input type="button" value="Sell" id="ECORsellButton" onClick=rexSell("ECOR")><input type="text" size=6 id="ECORSellField"/></td></tr>
+		
+		<tr><td>ECPA</td><td id="ECPAPriceField">0</td><td id="ECPAAvailableField">0</td><td id="ECPAOwnedField">0</td><td><input type="text" size=6 id="ECPABuyField"/><input type="button" value="Buy" id="ECPAbuyButton" onClick=rexBuy("ECPA")><input type="button" value="Max" onClick=rexProductMax("ECPA")><input type="button" value="Sell" id="ECPAsellButton" onClick=rexSell("ECPA")><input type="text" size=6 id="ECPASellField"/></td></tr>
+		
+		<tr><td>NZG</td><td id="NZGPriceField">0</td><td id="NZGAvailableField">0</td><td id="NZGOwnedField">0</td><td><input type="text" size=6 id="NZGBuyField"/><input type="button" value="Buy" id="NZGbuyButton" onClick=rexBuy("NZG")><input type="button" value="Max" onClick=rexProductMax("NZG")><input type="button" value="Sell" id="NZGsellButton" onClick=rexSell("NZG")><input type="text" size=6 id="NZGSellField"/></td></tr>
+		</table>
+	</div>
+
+	<div id="statisticsTable">
+		<table id="statisticsGrid" cellpadding="2" cellspacing="1">
+		<tr><th>Player</th></tr>
+		<tr><td>Cash</td><td id="playerCash">000</td></tr>
+		<tr><td>Bank</td><td id="playerBank">000</td></tr>
+		<tr><td>Product</td><td id="playerProduct">000</td></tr>
+		<tr><td>Assets</td><td id="playerAssets">000</td></tr>
+		<tr><td>Average</td><td id="playerAverage">000</td></tr>
+		<tr><td>Day</td><td id="dayNumber">000</td></tr>
+		<tr><th>Info</th></tr>
+		<tr><td>Days Left</td><td id="daysLeft">000</td></tr>
+		<tr><td>Wage</td><td id="playerWage">000</td></tr>
+		<tr><td>Interest Rate</td><td id="playerInterest">000</td></tr>
+		</table>
+	</div>
+	
+	<script type="text/javascript">
+		window.onload = rexInitGame();
+	</script>
+	
+</body>
+
+</html>
